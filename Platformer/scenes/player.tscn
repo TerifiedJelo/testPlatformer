@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ks01dvmscprh"]
+
+[ext_resource type="Texture2D" uid="uid://dlh6igshttmtg" path="res://icon.svg" id="1_gk71h"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ivo2i"]
+[ext_resource type="PackedScene" uid="uid://hfgeaphmdcu5" path="res://scenes/bullet.tscn" id="2_djadh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37rfr"]
+size = Vector2(106, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0uus"]
+size = Vector2(106, 124)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -1)
+collision_layer = 2
+script = ExtResource("1_ivo2i")
+jump_force = 750
+ammo = ExtResource("2_djadh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.851563, 1)
+texture = ExtResource("1_gk71h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_37rfr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -135)
+
+[node name="Player" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_t0uus")

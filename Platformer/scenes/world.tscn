@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyhljaxtlvei8"]
+
+[ext_resource type="PackedScene" uid="uid://ks01dvmscprh" path="res://scenes/player.tscn" id="1_ayp14"]
+[ext_resource type="PackedScene" uid="uid://b1q7jr2md7kv6" path="res://scenes/turret.tscn" id="2_lf2a7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_woxqw"]
+size = Vector2(1000, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_232of"]
+size = Vector2(419, 46)
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ayp14")]
+position = Vector2(611, 180)
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(503, 283)
+collision_mask = 0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+modulate = Color(0.239216, 0.239216, 0.239216, 1)
+position = Vector2(135, 27.5)
+scale = Vector2(0.416, 0.45)
+mesh = SubResource("QuadMesh_woxqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(133, 28)
+shape = SubResource("RectangleShape2D_232of")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(1619, 442)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
+modulate = Color(0.239216, 0.239216, 0.239216, 1)
+position = Vector2(-542, -166)
+scale = Vector2(0.422, 0.49)
+mesh = SubResource("QuadMesh_woxqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(-545, -169)
+shape = SubResource("RectangleShape2D_232of")
+
+[node name="Turret" parent="." instance=ExtResource("2_lf2a7")]
+position = Vector2(271, -53)
